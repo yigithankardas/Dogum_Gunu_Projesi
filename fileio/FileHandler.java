@@ -2,7 +2,6 @@ package fileio;
 import java.io.*;
 import java.util.Scanner;
 
-import arrayList.ArrayList;
 import dates.AbstractCalendar;
 
 @SuppressWarnings("unused")
@@ -12,7 +11,7 @@ public class FileHandler {
 	private StringBuilder builder;
 	private Scanner scan;
 	private File file;
-	public static final String PATH = "C:/Users/Yigithan/OneDrive - TOBB Ekonomi ve Teknoloji Üniversitesi/DogumGunleri.txt";
+	public static final String PATH = "C:/Users/Yigithan/OneDrive - TOBB Ekonomi ve Teknoloji Ãœniversitesi/DogumGunleri.txt";
 	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
 	
