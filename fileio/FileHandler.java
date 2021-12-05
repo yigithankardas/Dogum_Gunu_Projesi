@@ -16,6 +16,9 @@ public class FileHandler {
 	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
 	
+	
+	
+	
 	public FileHandler() {
 		builder = new StringBuilder("");
 		file = new File(PATH);
