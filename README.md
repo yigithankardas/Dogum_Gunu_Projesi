@@ -6,3 +6,6 @@ Programa 'hardcoded' bir sistem yolu verdiğim için sizde büyük ihtimalle ça
 
 06/12/2021 Güncelleme:
   1 haftadır JLabel'a icon eklemeyi beceremediğim için yeni release gelmedi. Bu saçma sorunu çözmeye çalışıyorum.
+
+09/12/2021 Güncelleme:
+  Resim ekleme sorununu çözdüm. Resimleri yüklemek zaman gerektirdiği için programın başında yüklemek gerekiyormuş.
