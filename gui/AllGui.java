@@ -2,6 +2,7 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseListener;
 
 
 public class AllGui {
@@ -10,8 +11,10 @@ public class AllGui {
 		JLabel settingsButtonLabel = new JLabel();
 		java.net.URL settingsImageURL = AllGui.class.getResource("/images/Settings.png");
 		ImageIcon settingsImageIcon = new ImageIcon(settingsImageURL);
-		settingsImageIcon.setImage(settingsImageIcon.getImage().getScaledInstance(26, 22, Image.SCALE_AREA_AVERAGING));
+		settingsImageIcon.setImage(settingsImageIcon.getImage().getScaledInstance(24, 22, Image.SCALE_AREA_AVERAGING));
 		settingsButtonLabel.setIcon(settingsImageIcon);
+		MouseListener settingsButtonListener = new SettingsMouseListener(settingsButtonLabel, settingsImageIcon);
+
 		
 		JFrame frame = new JFrame();
 		frame.setLocation(262, 1);
@@ -33,9 +36,10 @@ public class AllGui {
 		mainPanel.add(topPanel);
 		
 		JPanel settingsButtonPanel = new JPanel();
-		settingsButtonPanel.setSize(28, 27);
-		settingsButtonPanel.setLocation(956, -4);
+		settingsButtonPanel.setSize(24, 27);
+		settingsButtonPanel.setLocation(960, -4);
 		settingsButtonPanel.setBackground(new Color(80, 80, 80));
+		settingsButtonPanel.addMouseListener(settingsButtonListener);
 		topPanel.add(settingsButtonPanel);
 		settingsButtonPanel.add(settingsButtonLabel);
 	}
