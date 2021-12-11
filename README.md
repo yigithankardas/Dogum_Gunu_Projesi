@@ -9,3 +9,6 @@ Doğum günlerini bir dosyada saklar.
 
 09/12/2021 Güncelleme:
   Resim ekleme sorununu çözdüm. Resimleri yüklemek zaman gerektirdiği için programın başında yüklemek gerekiyormuş.
+
+11/12/2021 Güncelleme:
+  Resim eklerken oluşan hataları düzeltemedim ve resim eklememe kararı aldım. Programın güncel görüntüsü bu şekilde:![Ekran görüntüsü 2021-12-11 160456](https://user-images.githubusercontent.com/78052319/145677559-5347ccb2-a104-4d1b-b162-fc996e6312f4.png)
