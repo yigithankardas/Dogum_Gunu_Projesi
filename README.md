@@ -14,6 +14,8 @@ Doğum günlerini bir dosyada saklar.
   Resim eklerken oluşan hataları düzeltemedim ve resim eklememe kararı aldım.
   
 13/12/2021 Güncelleme:
-  Üstte bahsettiğim tüm problemler, ```frame.setVisible(true)``` ifadesini sonda yazmak yerine başlarda yazmamdan kaynaklanıyormuş. Birkaç GUI iyileştirmesi yaptım. Programın    güncel halini fotoğraf olarak ekliyorum.
+  Üstte bahsettiğim tüm problemler, ```frame.setVisible(true)``` ifadesini sonda yazmak yerine başlarda yazmamdan kaynaklanıyormuş. Birkaç GUI iyileştirmesi yaptım.
   
-![Ekran görüntüsü 2021-12-13 035941](https://user-images.githubusercontent.com/78052319/145737246-6e834562-c177-4625-ab57-de3c72c65f9c.png)
+Güncelleme 2:
+  Arama kutusu ekledim. Güncel hali fotoğraf olarak ekledim.
+  ![Ekran görüntüsü 2021-12-13 162147](https://user-images.githubusercontent.com/78052319/145820117-a73d0cee-c1b1-450d-a2fe-30b4ea9d19de.png)
