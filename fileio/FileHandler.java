@@ -12,7 +12,7 @@ public class FileHandler {
 	private StringBuilder builder;
 	private Scanner scan;
 	private File file;
-	public static final String PATH = "HERHANGI BIR BOS TXT DOSYASININ PATH'INI YAZ";
+	public static final String PATH = "C:/Users/Yigithan/OneDrive - TOBB Ekonomi ve Teknoloji Üniversitesi/DogumGunleri.txt";
 	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
 	

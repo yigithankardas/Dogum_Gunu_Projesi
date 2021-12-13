@@ -26,7 +26,33 @@ public class AllGui {
 		noUpcomingBirthday.setSize(500, 50);
 		noUpcomingBirthday.setLocation(345, 65);
 		noUpcomingBirthday.setFont(new Font("SansSerif", Font.ITALIC, 16));
-		noUpcomingBirthday.setForeground(new Color(50, 50, 50));
+		noUpcomingBirthday.setForeground(new Color(70, 70, 70));
+		
+		JLabel searchLabel = new JLabel();
+		ImageIcon searchIcon = new ImageIcon(AllGui.class.getResource("/images/Search.png"));
+		searchIcon.setImage(searchIcon.getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+		searchLabel.setSize(25, 25);
+		searchLabel.setLocation(2, 0);
+		searchLabel.setIcon(searchIcon);
+		
+		JLabel searchLabel2 = new JLabel();
+		searchLabel2.setSize(100, 25);
+		searchLabel2.setLocation(30, -1);
+		searchLabel2.setText("Doðumgünü ara");
+		searchLabel2.setFont(new Font("SansSerif", Font.ITALIC, 12));
+		searchLabel2.setForeground(Color.gray);
+		
+		JTextField searchField = new JTextField();
+		searchField.setSize(846, 25);
+		searchField.setLocation(2, 0);
+		searchField.setBackground(Color.black);
+		searchField.setForeground(Color.white);
+		searchField.setCaretColor(Color.white);
+		searchField.setBorder(null);
+		searchField.setFont(new Font("SansSerif", Font.PLAIN, 15));
+		searchField.setOpaque(false);
+		searchField.addMouseListener(new FocusListenerForTextField(searchField));
+		searchField.addFocusListener(new WindowFocusListenerForTextField(searchField, searchLabel, searchLabel2));
 		
 		JFrame frame = new JFrame();
 		frame.setLocation(262, 1);
@@ -38,7 +64,7 @@ public class AllGui {
 		mainPanel.setLayout(null);
 		mainPanel.setBackground(new Color(40, 40, 40));
 		mainPanel.addKeyListener(new QuitListener(frame));
-		mainPanel.addMouseListener(new FocusListener(mainPanel));
+		mainPanel.addMouseListener(new FocusListenerForPanel(mainPanel));
 		
 		JPanel topPanel = new JPanel();
 		topPanel.setLayout(null);
@@ -80,14 +106,27 @@ public class AllGui {
 		rightPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 		rightPanel.setBackground(new Color(50, 50, 50));
 		
+		JPanel searchPanel = new JPanel();
+		searchPanel.setLayout(null);
+		searchPanel.setSize(846, 25);
+		searchPanel.setLocation(70, 227);
+		//searchPanel.setBorder(BorderFactory.createLineBorder(Color.red));
+		searchPanel.setBackground(Color.black);
+		
 		
 		frame.setVisible(true);
 		settingsPanel.add(settingsLabel);
 		topPanel.add(upcomingAnnotationPanel);
 		upcomingPanel.add(noUpcomingBirthday);
 		upcomingAnnotationPanel.add(upcomingLabel);
+		
+		searchPanel.add(searchLabel);
+		searchPanel.add(searchLabel2);
+		searchPanel.add(searchField);
+
 		topPanel.add(settingsPanel);
 		mainPanel.add(upcomingPanel);
+		mainPanel.add(searchPanel);
 		mainPanel.add(topPanel);
 		mainPanel.add(leftPanel);
 		mainPanel.add(rightPanel);
