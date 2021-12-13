@@ -11,4 +11,9 @@ Doğum günlerini bir dosyada saklar.
   Resim ekleme sorununu çözdüm. Resimleri yüklemek zaman gerektirdiği için programın başında yüklemek gerekiyormuş.
 
 11/12/2021 Güncelleme:
-  Resim eklerken oluşan hataları düzeltemedim ve resim eklememe kararı aldım. Programın güncel görüntüsü bu şekilde:![Ekran görüntüsü 2021-12-11 160456](https://user-images.githubusercontent.com/78052319/145677559-5347ccb2-a104-4d1b-b162-fc996e6312f4.png)
+  Resim eklerken oluşan hataları düzeltemedim ve resim eklememe kararı aldım.
+  
+13/12/2021 Güncelleme:
+  Üstte bahsettiğim tüm problemler, ```frame.setVisible(true)``` ifadesini sonda yazmak yerine başlarda yazmamdan kaynaklanıyormuş. Birkaç GUI iyileştirmesi yaptım. Programın    güncel halini fotoğraf olarak ekliyorum.
+  
+![Ekran görüntüsü 2021-12-13 035941](https://user-images.githubusercontent.com/78052319/145737246-6e834562-c177-4625-ab57-de3c72c65f9c.png)
