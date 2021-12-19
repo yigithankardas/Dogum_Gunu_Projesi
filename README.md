@@ -18,4 +18,8 @@ Doğum günlerini bir dosyada saklar.
   
 Güncelleme 2:
   Arama kutusu ekledim. Güncel hali fotoğraf olarak ekledim.
-  ![Ekran görüntüsü 2021-12-13 162147](https://user-images.githubusercontent.com/78052319/145820117-a73d0cee-c1b1-450d-a2fe-30b4ea9d19de.png)
+  
+  19/12/2021 Güncelleme:
+    Arama kutusunu geliştirdim. Dosyadan okunan değerler ile yeni paneller oluşturup bunları JScrollPane ile gezebiliyorum. Doğumgünleri ```bottomPanel```'de listeleniyor.
+    Programın güncel halinin fotoğrafını ekledim.
+    ![Ekran görüntüsü 2021-12-19 165035](https://user-images.githubusercontent.com/78052319/146677276-a03712b3-3771-4ed1-8b64-ab71f7708203.png)
