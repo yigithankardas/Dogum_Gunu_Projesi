@@ -20,21 +20,21 @@ public class FocusListenerForPanel implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		panel.requestFocus();
+		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		panel.requestFocus();
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		panel.requestFocus();
+		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		panel.requestFocus();
+		
 	}
 }

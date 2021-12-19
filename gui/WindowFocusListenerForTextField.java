@@ -27,8 +27,11 @@ public class WindowFocusListenerForTextField implements FocusListener {
 
 	@Override
 	public void focusLost(FocusEvent e) {
-		textField.setOpaque(false);
-		label1.setVisible(true);
-		label2.setVisible(true);
+		if (textField.getText().equals("")) {
+			textField.setOpaque(false);
+			label1.setVisible(true);
+			label2.setVisible(true);
+			textField.setText("");
+		}
 	}
 }
