@@ -13,6 +13,7 @@ public class FileHandler {
 	private Scanner scan;
 	private File file;
 	public static final String PATH = "C:/Users/Yigithan/OneDrive - TOBB Ekonomi ve Teknoloji Üniversitesi/DogumGunleri.txt";
+	//public static final String PATH = "C:/Users/Yigithan/Desktop/DogumGunleri.txt";
 	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
 	
@@ -95,5 +96,33 @@ public class FileHandler {
 	
 	public ArrayList<String> getBirthdayList() {
 		return lineList;
+	}
+	
+	public ArrayList<String> find(String date) {
+		ArrayList<String> list = new ArrayList<>();
+		date = AbstractCalendar.arrangeDate(date);
+		for (String s : lineList)
+			if (s.contains(date))
+				list.add(s);
+		if (list.isEmpty()) {
+			ArrayList<Integer> compareList = new ArrayList<>();
+			for (int i = 0; i < lineList.size(); i++) {
+				String line = lineList.get(i);
+				String date2 = AbstractCalendar.findDate(line);
+				compareList.add(AbstractCalendar.distanceBetween(date, date2));
+			}
+			
+			int min = compareList.get(0);
+			for (int i = 1; i < compareList.size(); i++) {
+				int current = compareList.get(i);
+				if (min > current)
+					min = current;
+			}
+			for (int i = 0; i < compareList.size(); i++) {
+				if (min == compareList.get(i))
+					list.add(lineList.get(i));
+			}
+		}
+		return list;
 	}
 }

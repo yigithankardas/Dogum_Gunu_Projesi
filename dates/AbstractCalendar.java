@@ -1,6 +1,8 @@
 package dates;
 
-@SuppressWarnings("unused")
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
 public class AbstractCalendar {
 	
 	private static final String OCAK = "Ocak";
@@ -15,6 +17,7 @@ public class AbstractCalendar {
 	private static final String EKIM = "Ekim";
 	private static final String KASIM = "Kasým";
 	private static final String ARALIK = "Aralýk";
+	private static final String[] monthArray = {OCAK, SUBAT, MART, NISAN, MAYIS, HAZIRAN, TEMMUZ, AGUSTOS, EYLUL, EKIM, KASIM, ARALIK};
 	
 	public static int compare(String date1, String date2) {
 		int data1 = correspondingInt(date1);
@@ -79,5 +82,73 @@ public class AbstractCalendar {
 		int arrowIndex = line.indexOf("==> ");
 		String name = line.substring(arrowIndex + 4);
 		return name;
+	}
+	
+	public static String getCurrentDate() {
+		return DateTimeFormatter.ofPattern("dd/MM").format(LocalDateTime.now());
+	}
+	
+	public static String arrangeDate(String date) {
+		int index = date.indexOf("/");
+		String day = date.substring(0, index);
+		String month = date.substring(index + 1);
+		if (month.equals("1")) {
+			return day + " " + OCAK;
+		}
+		else if (month.equals("2")) {
+			return day + " " + SUBAT;
+		}
+		else if (month.equals("3")) {
+			return day + " " + MART;
+		}
+		else if (month.equals("4")) {
+			return day + " " + NISAN;
+		}
+		else if (month.equals("5")) {
+			return day + " " + MAYIS;
+		}
+		else if (month.equals("6")) {
+			return day + " " + HAZIRAN;
+		}
+		else if (month.equals("7")) {
+			return day + " " + TEMMUZ;
+		}
+		else if (month.equals("8")) {
+			return day + " " + AGUSTOS;
+		}
+		else if (month.equals("9")) {
+			return day + " " + EYLUL;
+		}
+		else if (month.equals("10")) {
+			return day + " " + EKIM;
+		}
+		else if (month.equals("11")) {
+			return day + " " + KASIM;
+		}
+		else {
+			return day + " " + ARALIK;
+		}
+	}
+	
+	public static int distanceBetween(String date1, String date2) {
+		int date1Index = 0;
+		int date2Index = 0;
+		for (int i = 0; i < monthArray.length; i++) {
+			String month1 = date1.substring(date1.indexOf(" ") + 1);
+			String month2 = date2.substring(date2.indexOf(" ") + 1);
+			if (monthArray[i].equals(month1))
+				date1Index = i + 1;
+			if (monthArray[i].equals(month2))
+				date2Index = i + 13;
+		}
+		int monthDistance = date1Index - date2Index;
+		int day1 = Integer.parseInt(date1.substring(0, date1.indexOf(" ")));
+		int day2 = Integer.parseInt(date2.substring(0, date2.indexOf(" ")));
+		if (monthDistance == 0) 
+			return (day1 > day2) ? Integer.MAX_VALUE : (day2 - day1);
+		else
+			if (monthDistance < 0)
+				return day1 + day2 + (-monthDistance * 30);
+		return Integer.MIN_VALUE;
 	}
 }
