@@ -1,5 +1,6 @@
 package fileio;
 import java.io.*;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -12,14 +13,12 @@ public class FileHandler {
 	private StringBuilder builder;
 	private Scanner scan;
 	private File file;
-	public static final String PATH = "C:/Users/Yigithan/OneDrive - TOBB Ekonomi ve Teknoloji Üniversitesi/DogumGunleri.txt";
-	//public static final String PATH = "C:/Users/Yigithan/Desktop/DogumGunleri.txt";
 	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
 	
-	public FileHandler() {
+	public FileHandler(File file) {
 		builder = new StringBuilder("");
-		file = new File(PATH);
+		this.file = file;
 		lineList = new ArrayList<>();
 		setScannerToFile();
 		initializeText();
@@ -63,6 +62,17 @@ public class FileHandler {
 	public void add(String name, String birthday) {
 		lineList.add(birthday + " ==> " + name);
 		sort();
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(file);
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Exception in \"FileHandler\" class.");
+			System.exit(0);
+		}
+		for (String s : lineList)
+			writer.write(s + "\n\n");
+		writer.close();
 	}
 	
 	public void remove(String name) {
@@ -70,6 +80,17 @@ public class FileHandler {
 			if (AbstractCalendar.findName(lineList.get(i)).equals(name))
 				lineList.remove(i);
 		}
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter(file);
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Exception in \"FileHandler\" class.");
+			System.exit(0);
+		}
+		for (String s : lineList)
+			writer.write(s + "\n\n");
+		writer.close();
 	}
 	
 	private void setScannerToFile() {
@@ -99,6 +120,8 @@ public class FileHandler {
 	}
 	
 	public ArrayList<String> find(String date) {
+		if (lineList.isEmpty())
+			return null;
 		ArrayList<String> list = new ArrayList<>();
 		date = AbstractCalendar.arrangeDate(date);
 		for (String s : lineList)

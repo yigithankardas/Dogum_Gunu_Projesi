@@ -92,31 +92,31 @@ public class AbstractCalendar {
 		int index = date.indexOf("/");
 		String day = date.substring(0, index);
 		String month = date.substring(index + 1);
-		if (month.equals("1")) {
+		if (month.equals("01")) {
 			return day + " " + OCAK;
 		}
-		else if (month.equals("2")) {
+		else if (month.equals("02")) {
 			return day + " " + SUBAT;
 		}
-		else if (month.equals("3")) {
+		else if (month.equals("03")) {
 			return day + " " + MART;
 		}
-		else if (month.equals("4")) {
+		else if (month.equals("04")) {
 			return day + " " + NISAN;
 		}
-		else if (month.equals("5")) {
+		else if (month.equals("05")) {
 			return day + " " + MAYIS;
 		}
-		else if (month.equals("6")) {
+		else if (month.equals("06")) {
 			return day + " " + HAZIRAN;
 		}
-		else if (month.equals("7")) {
+		else if (month.equals("07")) {
 			return day + " " + TEMMUZ;
 		}
-		else if (month.equals("8")) {
+		else if (month.equals("08")) {
 			return day + " " + AGUSTOS;
 		}
-		else if (month.equals("9")) {
+		else if (month.equals("09")) {
 			return day + " " + EYLUL;
 		}
 		else if (month.equals("10")) {
@@ -131,19 +131,24 @@ public class AbstractCalendar {
 	}
 	
 	public static int distanceBetween(String date1, String date2) {
+		boolean in = true;
 		int date1Index = 0;
 		int date2Index = 0;
-		for (int i = 0; i < monthArray.length; i++) {
-			String month1 = date1.substring(date1.indexOf(" ") + 1);
-			String month2 = date2.substring(date2.indexOf(" ") + 1);
+		String month1 = date1.substring(date1.indexOf(" ") + 1);
+		String month2 = date2.substring(date2.indexOf(" ") + 1);
+		int day1 = Integer.parseInt(date1.substring(0, date1.indexOf(" ")));
+		int day2 = Integer.parseInt(date2.substring(0, date2.indexOf(" ")));
+		if (month1.equals(month2)) {
+			if (day1 <= day2) 
+				in = false;
+		}
+		for (int i = 0; i < monthArray.length && in; i++) {
 			if (monthArray[i].equals(month1))
 				date1Index = i + 1;
 			if (monthArray[i].equals(month2))
 				date2Index = i + 13;
 		}
 		int monthDistance = date1Index - date2Index;
-		int day1 = Integer.parseInt(date1.substring(0, date1.indexOf(" ")));
-		int day2 = Integer.parseInt(date2.substring(0, date2.indexOf(" ")));
 		if (monthDistance == 0) 
 			return (day1 > day2) ? Integer.MAX_VALUE : (day2 - day1);
 		else
