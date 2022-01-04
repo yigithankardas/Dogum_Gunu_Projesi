@@ -25,4 +25,7 @@ Güncelleme 2:
 25/12/2021 Güncelleme:
   O günün tarihine en yakın olan doğumgününü bulma algoritmasını ekledim.
   Programın güncel halinin fotoğrafını ekledim.
-  ![sasasasaas](https://user-images.githubusercontent.com/78052319/147386528-8ecfd036-b345-4ee3-8c91-778b2f3e8ebe.png)
+  
+04/01/2022 Güncelleme:
+ Doğum günü eklemeyi sağlayacak yeni bir panel ve buton ekledim. Programın güncel halini fotoğraf olarak ekledim.
+ ![guncel](https://user-images.githubusercontent.com/78052319/148112631-176b3e52-d85f-40af-9ec6-7ed22d0da07a.png)
