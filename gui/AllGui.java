@@ -6,7 +6,10 @@ import dates.AbstractCalendar;
 import fileio.FileHandler;
 
 import java.awt.*;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList; 
 
 public class AllGui {
@@ -202,8 +205,8 @@ public class AllGui {
 		frame.add(mainPanel);
 		
 		createBirthdayPanels(bottomPanel, birthdayPanelList);
-		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList);
-		setUpomingBirthdays(handler, upcomingPanel, noUpcomingBirthday);
+		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList, handler);
+		setUpomingBirthdays(handler, upcomingPanel);
 		bottomPanel.requestFocus();
 	}
 	
@@ -225,60 +228,101 @@ public class AllGui {
 	public static void updateBirthdayPanels(FileHandler handler) {
 		ArrayList<String> list = handler.getBirthdayList();
 		birthdayPanelList.clear();
+		bottomPanel.setVisible(false);
 		bottomPanel.removeAll();
 		for (int i = 0; i < list.size(); i++) {
 			BottomBirthdayPanel bbp = new BottomBirthdayPanel();
 			bottomPanel.add(bbp);
 			birthdayPanelList.add(bbp);
 		}
-		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList);
-		setUpomingBirthdays(handler, upcomingPanel, noUpcomingBirthday);
+		bottomPanel.setVisible(true);
+		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList, handler);
+		setUpomingBirthdays(handler, upcomingPanel);
 	}
 	
-	private static void arrangeBirthdayPanels(ArrayList<String> birthdayList, ArrayList<BottomBirthdayPanel> birthdayPanelList) {
+	private static void arrangeBirthdayPanels(ArrayList<String> birthdayList, ArrayList<BottomBirthdayPanel> birthdayPanelList, FileHandler handler) {
 		for (int i = 0; i < birthdayPanelList.size(); i++) {
 			BottomBirthdayPanel currentPanel = birthdayPanelList.get(i);
 			currentPanel.setVisible(false);
 			String currentBirthday = birthdayList.get(i);
-			String name = currentBirthday.substring(0, currentBirthday.indexOf("=") - 1);
-			String date = currentBirthday.substring(currentBirthday.indexOf("=") + 3);
+			String date = currentBirthday.substring(0, currentBirthday.indexOf("=") - 1);
+			String name = currentBirthday.substring(currentBirthday.indexOf("=") + 4);
 			Font font = new Font("SansSerif", Font.PLAIN, 25);
 			
 			JLabel nameLabel = new JLabel();
 			nameLabel.setText(name);
 			nameLabel.setFont(font);
 			nameLabel.setForeground(Color.white);
-			nameLabel.setBounds(50, 5, 200, 75);
+			nameLabel.setBounds(300, 5, 300, 75);
 			
 			JLabel dateLabel = new JLabel();
 			dateLabel.setText(date);
 			dateLabel.setFont(font);
 			dateLabel.setForeground(Color.white);
-			dateLabel.setBounds(300, 5, 300, 75);
+			dateLabel.setBounds(50, 5, 200, 75);
+			
+			JLabel deleteLabel = new JLabel();
+			deleteLabel.setText("X");
+			deleteLabel.setForeground(Color.white);
+			deleteLabel.setBounds(5, 2, 15, 15);
+			deleteLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
+			
+			JPanel deletePanel = new JPanel();
+			deletePanel.setLayout(null);
+			deletePanel.setBounds(750, 50, 20, 20);
+			deletePanel.setBackground(new Color(60, 60, 60));
+			deletePanel.addMouseListener(new MouseListener() {
+				private Color color1 = new Color(60, 60, 60);
+				private Color color2 = new Color(80, 80, 80);
+				private Color color3 = new Color(120, 120, 120);
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					int answer = JOptionPane.showConfirmDialog(null, "Silme iþlemini onaylýyor musunuz?", null, JOptionPane.YES_NO_OPTION);
+					if (answer == JOptionPane.YES_OPTION) {
+						handler.remove(name);
+						updateBirthdayPanels(handler);
+					}
+				}
+				@Override
+				public void mousePressed(MouseEvent e) {
+					deletePanel.setBackground(color2);
+				}
+				@Override
+				public void mouseReleased(MouseEvent e) {
+					deletePanel.setBackground(color3);
+				}
+				@Override
+				public void mouseEntered(MouseEvent e) {
+					deletePanel.setBackground(color3);
+				}
+				@Override
+				public void mouseExited(MouseEvent e) {
+					deletePanel.setBackground(color1);
+				}
+			});
+			deletePanel.add(deleteLabel);
 			
 			currentPanel.add(nameLabel);
 			currentPanel.add(dateLabel);
+			currentPanel.add(deletePanel);
 			currentPanel.setVisible(true);
 		}
 	}
 	
-	private static void setUpomingBirthdays(FileHandler handler, JPanel upcomingPanel, JLabel noUpcomingBirthday) {
-		JLabel label = null;
-		for (int i = 0; i < upcomingPanel.getComponentCount(); i++) {
-			if (upcomingPanel.getComponent(i) instanceof JLabel)
-				label = (JLabel)upcomingPanel.getComponent(i);
-		}
+	private static void setUpomingBirthdays(FileHandler handler, JPanel upcomingPanel) {
 		upcomingPanel.setVisible(false);
 		upcomingPanel.removeAll();
 		ArrayList<String> list = handler.find(AbstractCalendar.getCurrentDate());
 		if (list == null) {
-			if (upcomingPanel.getComponentCount() == 0) {
-				label.setVisible(true);
-				upcomingPanel.add(label);
-			}
+			upcomingPanel.setLayout(null);
+			if (upcomingPanel.getComponentCount() == 0)
+				upcomingPanel.add(noUpcomingBirthday);
+			noUpcomingBirthday.setLocation(345, 70);
 			upcomingPanel.setVisible(true);
+			noUpcomingBirthday.setVisible(true);
 			return;
 		}
+		
 		int size = list.size();
 		if (size != 0) {
 			noUpcomingBirthday.setVisible(false);
@@ -331,7 +375,60 @@ public class AllGui {
 			upcomingPanel.setLayout(null);
 			noUpcomingBirthday.setVisible(true);
 		}
-		
 		upcomingPanel.setVisible(true);
+	}
+	
+	public static void firstTime() {
+		JFrame frame = new JFrame();
+		frame.setBounds(500, 300, 450, 250);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		frame.setVisible(true);
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(50, 50, 50));
+		panel.setLayout(new BorderLayout(10, 30));
+		frame.add(panel);
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new FlowLayout());
+		buttonPanel.setBackground(new Color(50, 50, 50));
+		
+		JPanel label1Panel = new JPanel();
+		label1Panel.setLayout(new FlowLayout());
+		label1Panel.setBackground(new Color(50, 50, 50));
+		
+		JPanel label2Panel = new JPanel();
+		label2Panel.setLayout(new FlowLayout());
+		label2Panel.setBackground(new Color(50, 50, 50));
+		
+		JLabel label1 = new JLabel();
+		label1.setText(System.getenv("USERPROFILE") + "/DogumGunleri.txt");
+		label1.setFont(new Font("SansSerif", Font.PLAIN, 25));
+		label1.setForeground(Color.white);
+		
+		JLabel label2 = new JLabel();
+		label2.setText("Veriler bu konumunda depolanacaktýr.");
+		label2.setFont(new Font("SansSerif", Font.PLAIN, 23));
+		label2.setForeground(new Color(180, 180, 180));
+		
+		JButton button = new JButton();
+		button.setText("Tamam");
+		button.setPreferredSize(new Dimension(110, 25));
+		button.setFocusable(false);
+		button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+			}
+		});
+		
+		label1Panel.add(label1);
+		panel.add(label1Panel, BorderLayout.NORTH);
+		label2Panel.add(label2);
+		panel.add(label2Panel, BorderLayout.CENTER);
+		buttonPanel.add(button);
+		panel.add(buttonPanel, BorderLayout.SOUTH);
+		frame.pack();
+		frame.setSize(frame.getWidth() + 1, frame.getHeight());
 	}
 }

@@ -65,14 +65,14 @@ public class HighlightPlusForAddPanel extends HighlightListener {
 		name.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 		
 		JComboBox<String> days = new JComboBox<>(thirtyOnes);
-		days.setBounds(200, 55, 100, 25);
+		days.setBounds(100, 55, 100, 25);
 		JComboBox<String> months = new JComboBox<>(monthArray);
-		months.setBounds(300, 55, 100, 25);
+		months.setBounds(205, 55, 100, 25);
 		months.addItemListener(new ItemListenerForComboBox(mainPanel, days, months));
 		
 		JButton button = new JButton();
 		button.setText("Ekle");
-		button.setBounds(50, 150, 100, 25);
+		button.setBounds(165, 150, 100, 30);
 		button.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		button.setFocusable(false);
 		button.addActionListener(new ActionListener() {

@@ -80,6 +80,7 @@ public class FileHandler {
 			if (AbstractCalendar.findName(lineList.get(i)).equals(name))
 				lineList.remove(i);
 		}
+		sort();
 		PrintWriter writer = null;
 		try {
 			writer = new PrintWriter(file);

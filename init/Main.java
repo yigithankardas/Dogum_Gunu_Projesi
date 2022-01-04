@@ -15,14 +15,14 @@ public class Main {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		/*if (exist == true) {	// dosya oluþturuldu
-			
+		FileHandler handler = new FileHandler(file);
+		AllGui frame = new AllGui(handler);
+		
+		if (exist == true) {	// dosya oluþturuldu
+			AllGui.firstTime();
 		}
 		else {		// dosya zaten vardý
 			
-		}*/
-		FileHandler handler = new FileHandler(file);
-		//System.out.println(handler.getBirthdayList());
-		AllGui frame = new AllGui(handler);
+		}
 	}
 }
