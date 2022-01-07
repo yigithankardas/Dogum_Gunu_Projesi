@@ -269,17 +269,29 @@ public class AllGui {
 			String name = currentBirthday.substring(currentBirthday.indexOf("=") + 4);
 			Font font = new Font("SansSerif", Font.PLAIN, 25);
 			
+			JPanel namePanel = new JPanel();
+			//namePanel.setLayout(null);
+			namePanel.setBounds(300, 25, 350, 50);
+			namePanel.setBackground(new Color(40, 40, 40));
+			
+			JPanel datePanel = new JPanel();
+			//datePanel.setLayout(null);
+			datePanel.setBounds(75, 25, 150, 50);
+			datePanel.setBackground(new Color(40, 40, 40));
+			
 			JLabel nameLabel = new JLabel();
 			nameLabel.setText(name);
 			nameLabel.setFont(font);
 			nameLabel.setForeground(Color.white);
-			nameLabel.setBounds(300, 5, 300, 75);
+			nameLabel.setBounds(0, 0, 300, 75);
+			namePanel.add(nameLabel);
 			
 			JLabel dateLabel = new JLabel();
 			dateLabel.setText(date);
 			dateLabel.setFont(font);
 			dateLabel.setForeground(Color.white);
-			dateLabel.setBounds(50, 5, 200, 75);
+			dateLabel.setBounds(0, 0, 200, 75);
+			datePanel.add(dateLabel);
 			
 			JLabel deleteLabel = new JLabel();
 			deleteLabel.setText("X");
@@ -322,8 +334,8 @@ public class AllGui {
 			});
 			deletePanel.add(deleteLabel);
 			
-			currentPanel.add(nameLabel);
-			currentPanel.add(dateLabel);
+			currentPanel.add(namePanel);
+			currentPanel.add(datePanel);
 			currentPanel.add(deletePanel);
 			currentPanel.setVisible(true);
 		}
@@ -440,20 +452,30 @@ public class AllGui {
 				UpcomingBirthdayPanel panel = new UpcomingBirthdayPanel();
 				String date = list.get(0);
 				
+				JPanel datePanel = new JPanel();
+				datePanel.setBackground(new Color(35, 35, 35));
+				datePanel.setBounds(100, 50, 250, 75);
+				
+				JPanel namePanel = new JPanel();
+				namePanel.setBackground(new Color(35, 35, 35));
+				namePanel.setBounds(400, 50, 400, 75);
+				
 				JLabel nameLabel = new JLabel();
-				nameLabel.setText(date.substring(0, date.indexOf("=") - 1));
-				nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 35));
+				nameLabel.setText(date.substring(date.indexOf("=") + 3));
+				nameLabel.setFont(new Font("SansSerif", Font.PLAIN, 45));
 				nameLabel.setForeground(Color.white);
-				nameLabel.setBounds(50, 5, 200, 75);
+				nameLabel.setBounds(0, 0, 200, 75);
+				namePanel.add(nameLabel);
 				
 				JLabel dateLabel = new JLabel();
-				dateLabel.setText(date.substring(date.indexOf("=") + 3));
-				dateLabel.setFont(new Font("SansSerif", Font.PLAIN, 35));
+				dateLabel.setText(date.substring(0, date.indexOf("=") - 1));
+				dateLabel.setFont(new Font("SansSerif", Font.PLAIN, 45));
 				dateLabel.setForeground(Color.white);
-				dateLabel.setBounds(300, 5, 300, 75);
+				dateLabel.setBounds(0, 0, 300, 75);
+				datePanel.add(dateLabel);
 				
-				panel.add(dateLabel);
-				panel.add(nameLabel);
+				panel.add(datePanel);
+				panel.add(namePanel);
 				upcomingPanel.add(panel);
 			}
 			else {

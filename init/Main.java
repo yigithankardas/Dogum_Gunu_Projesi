@@ -7,7 +7,7 @@ import gui.*;
 public class Main {
 	
 	public static void main(String[] args) {
-		File file = new File(System.getenv("USERPROFILE") + "/DogumGunleri.txt");
+		File file = new File(System.getenv("USERPROFILE") + "/OneDrive - TOBB Ekonomi ve Teknoloji Üniversitesi/DogumGunleri.txt");
 		boolean exist = false;
 		try {
 			exist = file.createNewFile();
@@ -20,9 +20,6 @@ public class Main {
 		
 		if (exist == true) {	// dosya oluþturuldu
 			AllGui.firstTime();
-		}
-		else {		// dosya zaten vardý
-			
 		}
 	}
 }
