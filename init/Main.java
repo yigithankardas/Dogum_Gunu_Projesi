@@ -4,7 +4,6 @@ import java.io.*;
 import fileio.*;
 import gui.*;
 
-@SuppressWarnings("unused")
 public class Main {
 	
 	public static void main(String[] args) {
@@ -17,6 +16,7 @@ public class Main {
 		}
 		FileHandler handler = new FileHandler(file);
 		AllGui frame = new AllGui(handler);
+		frame.initiate();
 		
 		if (exist == true) {	// dosya oluþturuldu
 			AllGui.firstTime();

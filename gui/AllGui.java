@@ -15,33 +15,103 @@ import java.util.ArrayList;
 public class AllGui {
 	
 	private FileHandler handler;
+	private ArrayList<BottomBirthdayPanel> birthdayPanelList;
 	
-	private static ArrayList<BottomBirthdayPanel> birthdayPanelList;
-	private static JPanel bottomPanel;
-	private static JPanel upcomingPanel;
-	private static JLabel noUpcomingBirthday;
+	private JFrame frame;
+	
+	private JPanel mainPanel;
+	private JPanel upcomingPanel;
+	private JPanel topPanel;
+	private JPanel leftPanel;
+	private JPanel rightPanel;
+	private JPanel bottomPanel;
+	private JPanel searchPanel;
+	private JPanel settingsPanel;
+	private JPanel upcomingAnnotationPanel;
+	private JPanel addPanel;
+	
+	private JLabel noUpcomingBirthday;
+	private JLabel settingsLabel;
+	private JLabel upcomingLabel;
+	private JLabel searchLabel;
+	private JLabel searchLabel2;
+	private JLabel addLabel;
+	
+	private JTextField searchField;
+	
+	private JScrollPane scroll;
+	private JScrollPane scroll2;
 	
 	public AllGui(FileHandler handler) {
-		
 		this.handler = handler;
-		ArrayList<Component> componentList = new ArrayList<>();
+	}
+	
+	public AllGui() {}
+	
+	public void initiate() {
 		birthdayPanelList = new ArrayList<>();
+		initiateLabels();
+		initiateTextFields();
 		
-		JLabel settingsLabel = new JLabel();
+		frame = new JFrame();
+		frame.setLocation(262, 1);
+		frame.setSize(1000, 820);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		
+		initiatePanels();
+		initiateScrollPanes();
+		addNecessaryComponentsToEachOther();
+		
+		frame.setVisible(true);
+		frame.add(mainPanel);
+		createBirthdayPanels();
+		arrangeBirthdayPanels();
+		setUpomingBirthdays();
+		
+		bottomPanel.requestFocus();
+	}
+	
+	private void addNecessaryComponentsToEachOther() {
+		mainPanel.add(scroll2);
+		mainPanel.add(searchPanel);
+		mainPanel.add(topPanel);
+		mainPanel.add(leftPanel);
+		mainPanel.add(rightPanel);
+		mainPanel.add(scroll);
+		
+		topPanel.add(upcomingAnnotationPanel);
+		topPanel.add(settingsPanel);
+		
+		settingsPanel.add(settingsLabel);
+		
+		upcomingPanel.add(noUpcomingBirthday);
+		
+		upcomingAnnotationPanel.add(upcomingLabel);
+		
+		leftPanel.add(addPanel);
+		
+		searchPanel.add(searchLabel);
+		searchPanel.add(searchLabel2);
+		searchPanel.add(searchField);
+		
+		addPanel.add(addLabel);
+	}
+
+	private void initiateLabels() {
+		settingsLabel = new JLabel();
 		settingsLabel.setText("Ayarlar");
 		settingsLabel.setSize(70, 24);
 		settingsLabel.setLocation(10, -1);
 		settingsLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		settingsLabel.setForeground(new Color(220, 220, 220));
-		componentList.add(settingsLabel);
 		
-		JLabel upcomingLabel = new JLabel();
+		upcomingLabel = new JLabel();
 		upcomingLabel.setText("YAKLAÞAN DOÐUMGÜNÜ");
 		upcomingLabel.setSize(240, 24);
 		upcomingLabel.setLocation(4, 0);
 		upcomingLabel.setFont(new Font("Serif", Font.BOLD, 18));
 		upcomingLabel.setForeground(new Color(220, 220, 220));
-		componentList.add(upcomingLabel);
 		
 		noUpcomingBirthday = new JLabel();
 		noUpcomingBirthday.setText("Yaklaþan doðumgünleri burada görünür.");
@@ -49,33 +119,31 @@ public class AllGui {
 		noUpcomingBirthday.setLocation(345, 70);
 		noUpcomingBirthday.setFont(new Font("SansSerif", Font.ITALIC, 16));
 		noUpcomingBirthday.setForeground(new Color(70, 70, 70));
-		componentList.add(noUpcomingBirthday);
 		
-		JLabel searchLabel = new JLabel();
+		searchLabel = new JLabel();
 		ImageIcon searchIcon = new ImageIcon(AllGui.class.getResource("/images/Search.png"));
 		searchIcon.setImage(searchIcon.getImage().getScaledInstance(18, 18, Image.SCALE_SMOOTH));
 		searchLabel.setSize(25, 22);
 		searchLabel.setLocation(2, 0);
 		searchLabel.setIcon(searchIcon);
-		componentList.add(searchLabel);
 		
-		JLabel searchLabel2 = new JLabel();
+		searchLabel2 = new JLabel();
 		searchLabel2.setSize(100, 25);
 		searchLabel2.setLocation(30, -2);
 		searchLabel2.setText("Doðumgünü ara");
 		searchLabel2.setFont(new Font("SansSerif", Font.ITALIC, 12));
 		searchLabel2.setForeground(Color.gray);
-		componentList.add(searchLabel2);
 		
-		JLabel addLabel = new JLabel();
+		addLabel = new JLabel();
 		addLabel.setText("+");
 		addLabel.setFont(new Font("SansSerif", Font.PLAIN, 65));
 		addLabel.setForeground(new Color(200, 200, 200));
 		addLabel.setSize(40, 40);
 		addLabel.setLocation(5, 3);
-		componentList.add(addLabel);
-		
-		JTextField searchField = new JTextField();
+	}
+	
+	private void initiateTextFields() {
+		searchField = new JTextField();
 		searchField.setSize(846, 25);
 		searchField.setLocation(0, 0);
 		searchField.setBackground(Color.black);
@@ -86,88 +154,71 @@ public class AllGui {
 		searchField.setOpaque(false);
 		searchField.addMouseListener(new FocusListenerForTextField(searchField));
 		searchField.addFocusListener(new WindowFocusListenerForTextField(searchField, searchLabel, searchLabel2));
-		componentList.add(searchField);
-		
-		JFrame frame = new JFrame();
-		frame.setLocation(262, 1);
-		frame.setSize(1000, 820);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setResizable(false);
-		componentList.add(frame);
-		
-		JPanel mainPanel = new JPanel();
+	}
+	
+	private void initiatePanels() {
+		mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-		componentList.add(mainPanel);
 		
 		bottomPanel = new JPanel();
 		bottomPanel.setLayout(new WrapLayout(FlowLayout.CENTER, 1, 1));
 		bottomPanel.setBackground(new Color(40, 40, 40));
 		bottomPanel.addMouseListener(new FocusListenerForPanel(bottomPanel));
-		componentList.add(bottomPanel);
 		
-		JPanel topPanel = new JPanel();
+		topPanel = new JPanel();
 		topPanel.setLayout(null);
 		topPanel.setSize(985, 25);
 		topPanel.setLocation(1, 2);
 		topPanel.setBackground(new Color(80, 80, 80));
-		componentList.add(topPanel);
 		
-		JPanel settingsPanel = new JPanel();
+		settingsPanel = new JPanel();
 		settingsPanel.setSize(70, 24);
 		settingsPanel.setLayout(null);
 		settingsPanel.setLocation(915, 0);
 		settingsPanel.setBackground(new Color(100, 100, 100));
 		settingsPanel.addMouseListener(new SettingsListener(settingsPanel));
-		componentList.add(settingsPanel);
 		
 		upcomingPanel = new JPanel();
 		upcomingPanel.setLayout(null);
 		upcomingPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 		upcomingPanel.setBackground(new Color(35, 35, 35));
-		componentList.add(upcomingPanel);
 		
-		JPanel upcomingAnnotationPanel = new JPanel();
+		upcomingAnnotationPanel = new JPanel();
 		upcomingAnnotationPanel.setLayout(null);
 		upcomingAnnotationPanel.setLocation(365, 0);
 		upcomingAnnotationPanel.setSize(240, 24);
 		upcomingAnnotationPanel.setBackground(Color.blue);
-		componentList.add(upcomingAnnotationPanel);
 		
-		JPanel leftPanel = new JPanel();
+		leftPanel = new JPanel();
 		leftPanel.setLayout(null);
 		leftPanel.setSize(70, 558);
 		leftPanel.setLocation(0, 225);
 		leftPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 		leftPanel.setBackground(new Color(50, 50, 50));
-		componentList.add(leftPanel);
 		
-		JPanel rightPanel = new JPanel();
+		rightPanel = new JPanel();
 		rightPanel.setLayout(null);
 		rightPanel.setSize(70, 558);
 		rightPanel.setLocation(916, 225);
 		rightPanel.setBorder(BorderFactory.createLineBorder(Color.blue));
 		rightPanel.setBackground(new Color(50, 50, 50));
-		componentList.add(rightPanel);
 		
-		JPanel searchPanel = new JPanel();
+		searchPanel = new JPanel();
 		searchPanel.setLayout(null);
 		searchPanel.setSize(846, 22);
 		searchPanel.setLocation(70, 229);
 		searchPanel.setBackground(Color.black);
-		componentList.add(searchPanel);
 		
-		JPanel addPanel = new JPanel();
+		addPanel = new JPanel();
 		addPanel.setLayout(null);
 		addPanel.setSize(50, 50);
 		addPanel.setLocation(10, 240);
 		addPanel.setBackground(new Color(70, 70, 70));
-		//addPanel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
-		addPanel.addMouseListener(new HighlightPlusForAddPanel(addPanel, handler));
-		componentList.add(addPanel);
-		
-		setQuitListener(componentList, frame);
-		
-		JScrollPane scroll = new JScrollPane(bottomPanel);
+		addPanel.addMouseListener(new HighlightPlusForAddPanel(addPanel, handler, this));
+	}
+	
+	private void initiateScrollPanes() {
+		scroll = new JScrollPane(bottomPanel);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll.setLocation(69, 251);
@@ -175,48 +226,16 @@ public class AllGui {
 		scroll.getVerticalScrollBar().setUnitIncrement(40);
 		scroll.setBorder(BorderFactory.createEmptyBorder());
 		
-		JScrollPane scroll2 = new JScrollPane(upcomingPanel);
+		scroll2 = new JScrollPane(upcomingPanel);
 		scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scroll2.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		scroll2.setSize(986, 202);
 		scroll2.setLocation(0, 27);
 		scroll2.getVerticalScrollBar().setUnitIncrement(40);
 		scroll2.setBorder(BorderFactory.createEmptyBorder());
-		
-		frame.setVisible(true);
-		settingsPanel.add(settingsLabel);
-		topPanel.add(upcomingAnnotationPanel);
-		upcomingPanel.add(noUpcomingBirthday);
-		upcomingAnnotationPanel.add(upcomingLabel);
-		searchPanel.add(searchLabel);
-		searchPanel.add(searchLabel2);
-		searchPanel.add(searchField);
-		topPanel.add(settingsPanel);
-		
-		leftPanel.add(addPanel);
-		addPanel.add(addLabel);
-		
-		mainPanel.add(scroll2);
-		mainPanel.add(searchPanel);
-		mainPanel.add(topPanel);
-		mainPanel.add(leftPanel);
-		mainPanel.add(rightPanel);
-		mainPanel.add(scroll);
-		frame.add(mainPanel);
-		
-		createBirthdayPanels(bottomPanel, birthdayPanelList);
-		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList, handler);
-		setUpomingBirthdays(handler, upcomingPanel);
-		bottomPanel.requestFocus();
 	}
 	
-	private void setQuitListener(ArrayList<Component> list, JFrame frame) {
-		for (Component a : list)
-			if (a instanceof JPanel)
-				a.addKeyListener(new QuitListener(frame));
-	}
-	
-	private void createBirthdayPanels(JPanel bottomPanel, ArrayList<BottomBirthdayPanel> birthdayPanelList) {
+	private void createBirthdayPanels() {
 		ArrayList<String> list = handler.getBirthdayList();
 		for (int i = 0; i < list.size(); i++) {
 			BottomBirthdayPanel bbp = new BottomBirthdayPanel();
@@ -225,7 +244,7 @@ public class AllGui {
 		}
 	}
 	
-	public static void updateBirthdayPanels(FileHandler handler) {
+	public void updateBirthdayPanels(FileHandler handler) {
 		ArrayList<String> list = handler.getBirthdayList();
 		birthdayPanelList.clear();
 		bottomPanel.setVisible(false);
@@ -236,11 +255,12 @@ public class AllGui {
 			birthdayPanelList.add(bbp);
 		}
 		bottomPanel.setVisible(true);
-		arrangeBirthdayPanels(handler.getBirthdayList(), birthdayPanelList, handler);
-		setUpomingBirthdays(handler, upcomingPanel);
+		arrangeBirthdayPanels();
+		setUpomingBirthdays();
 	}
 	
-	private static void arrangeBirthdayPanels(ArrayList<String> birthdayList, ArrayList<BottomBirthdayPanel> birthdayPanelList, FileHandler handler) {
+	private void arrangeBirthdayPanels() {
+		ArrayList<String> birthdayList = handler.getBirthdayList();
 		for (int i = 0; i < birthdayPanelList.size(); i++) {
 			BottomBirthdayPanel currentPanel = birthdayPanelList.get(i);
 			currentPanel.setVisible(false);
@@ -309,7 +329,95 @@ public class AllGui {
 		}
 	}
 	
-	private static void setUpomingBirthdays(FileHandler handler, JPanel upcomingPanel) {
+	public FileHandler getHandler() {
+		return handler;
+	}
+
+	public ArrayList<BottomBirthdayPanel> getBirthdayPanelList() {
+		return birthdayPanelList;
+	}
+
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public JPanel getMainPanel() {
+		return mainPanel;
+	}
+
+	public JPanel getUpcomingPanel() {
+		return upcomingPanel;
+	}
+
+	public JPanel getTopPanel() {
+		return topPanel;
+	}
+
+	public JPanel getLeftPanel() {
+		return leftPanel;
+	}
+
+	public JPanel getRightPanel() {
+		return rightPanel;
+	}
+
+	public JPanel getBottomPanel() {
+		return bottomPanel;
+	}
+
+	public JPanel getSearchPanel() {
+		return searchPanel;
+	}
+
+	public JPanel getSettingsPanel() {
+		return settingsPanel;
+	}
+
+	public JPanel getUpcomingAnnotationPanel() {
+		return upcomingAnnotationPanel;
+	}
+
+	public JPanel getAddPanel() {
+		return addPanel;
+	}
+
+	public JLabel getNoUpcomingBirthday() {
+		return noUpcomingBirthday;
+	}
+
+	public JLabel getSettingsLabel() {
+		return settingsLabel;
+	}
+
+	public JLabel getUpcomingLabel() {
+		return upcomingLabel;
+	}
+
+	public JLabel getSearchLabel() {
+		return searchLabel;
+	}
+
+	public JLabel getSearchLabel2() {
+		return searchLabel2;
+	}
+
+	public JLabel getAddLabel() {
+		return addLabel;
+	}
+
+	public JTextField getSearchField() {
+		return searchField;
+	}
+
+	public JScrollPane getScroll() {
+		return scroll;
+	}
+
+	public JScrollPane getScroll2() {
+		return scroll2;
+	}
+
+	private void setUpomingBirthdays() {
 		upcomingPanel.setVisible(false);
 		upcomingPanel.removeAll();
 		ArrayList<String> list = handler.find(AbstractCalendar.getCurrentDate());
