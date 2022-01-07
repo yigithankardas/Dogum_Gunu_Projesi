@@ -27,5 +27,7 @@ Güncelleme 2:
   Programın güncel halinin fotoğrafını ekledim.
   
 04/01/2022 Güncelleme:
- Doğum günü eklemeyi sağlayacak yeni bir panel ve buton ekledim. Programın güncel halini fotoğraf olarak ekledim.
- ![guncel](https://user-images.githubusercontent.com/78052319/148112631-176b3e52-d85f-40af-9ec6-7ed22d0da07a.png)
+ Doğum günü eklemeyi sağlayacak yeni bir panel ve buton ekledim.
+
+07/01/2022 Güncelleme:
+  Programın ilk erken erşimini açtım. Program şu anda açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
