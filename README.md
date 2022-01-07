@@ -30,4 +30,4 @@ Güncelleme 2:
  Doğum günü eklemeyi sağlayacak yeni bir panel ve buton ekledim.
 
 07/01/2022 Güncelleme:
-  Programın ilk erken erşimini açtım. Program şu anda açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
+  Programın ilk erken erşimini açtım. Program şu anda arma hariç açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
