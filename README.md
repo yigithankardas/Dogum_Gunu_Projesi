@@ -2,7 +2,7 @@
 Doğum günlerini depolayan ve doğum günü ekleme/çıkarma/gösterme gibi basit operasyonları yapabilen program.
 Doğum günlerini bir dosyada saklar.
 Çalıştırmadan önce FileHandler dosyasına herhangi bir boş text dosyasının sistem yolunu yazın.
-(Program hazır değil!)
+(Program %100 tamamlanmadı)
 
 06/12/2021 Güncelleme:
   1 haftadır JLabel'a icon eklemeyi beceremediğim için yeni release gelmedi. Bu saçma sorunu çözmeye çalışıyorum.
