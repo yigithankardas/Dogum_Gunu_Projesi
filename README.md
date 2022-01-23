@@ -31,3 +31,6 @@ Güncelleme 2:
 
 07/01/2022 Güncelleme:
   Programın ilk erken erşimini açtım. Program şu anda arma hariç açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
+
+23/01/2022 Güncelleme:
+  En yakın doğum gününü bulan algoritmadaki hatayı giderdim.
