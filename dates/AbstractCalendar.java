@@ -131,7 +131,6 @@ public class AbstractCalendar {
 	}
 	
 	public static int distanceBetween(String date1, String date2) {
-		boolean in = true;
 		int date1Index = 0;
 		int date2Index = 0;
 		String month1 = date1.substring(date1.indexOf(" ") + 1);
@@ -139,21 +138,25 @@ public class AbstractCalendar {
 		int day1 = Integer.parseInt(date1.substring(0, date1.indexOf(" ")));
 		int day2 = Integer.parseInt(date2.substring(0, date2.indexOf(" ")));
 		if (month1.equals(month2)) {
-			if (day1 <= day2) 
-				in = false;
+			if (day2 < day1) { 
+				return 360 - (day1 - day2);
+			}
+			else {
+				return day2 - day1;
+			}
 		}
-		for (int i = 0; i < monthArray.length && in; i++) {
-			if (monthArray[i].equals(month1))
-				date1Index = i + 1;
-			if (monthArray[i].equals(month2))
-				date2Index = i + 13;
-		}
-		int monthDistance = date1Index - date2Index;
-		if (monthDistance == 0) 
-			return (day1 > day2) ? Integer.MAX_VALUE : (day2 - day1);
-		else
+		else {
+			for (int i = 0; i < 12; i++) {
+				if (monthArray[i].equals(month1))
+					date1Index = i + 1;
+				if (monthArray[i].equals(month2))
+					date2Index = i + 1;
+			}
+			
+			int monthDistance = date1Index - date2Index;
 			if (monthDistance < 0)
 				return day1 + day2 + (-monthDistance * 30);
-		return Integer.MIN_VALUE;
+			return Integer.MIN_VALUE;
+		}
 	}
 }

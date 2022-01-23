@@ -25,9 +25,9 @@ public class HighlightPlusForAddPanel extends HighlightListener {
 	public static String[] february28 = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"};
 	public static String[] monthArray = {"Ocak", "Þubat", "Mart", "Nisan", "Mayýs", "Haziran", "Temmuz", "Aðustos", "Eylül", "Ekim", "Kasým", "Aralýk"};
 	private FileHandler handler;
-	private AllGui gui;
+	private GUI gui;
 
-	public HighlightPlusForAddPanel(JPanel panel, FileHandler handler, AllGui gui) {
+	public HighlightPlusForAddPanel(JPanel panel, FileHandler handler, GUI gui) {
 		super(panel);
 		this.handler = handler;
 		this.gui = gui;
