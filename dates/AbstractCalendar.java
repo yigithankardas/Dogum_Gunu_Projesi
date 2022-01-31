@@ -6,17 +6,17 @@ import java.time.LocalDateTime;
 public class AbstractCalendar {
 	
 	private static final String OCAK = "Ocak";
-	private static final String SUBAT = "Þubat";
+	private static final String SUBAT = "Ãžubat";
 	private static final String MART = "Mart";
 	private static final String NISAN = "Nisan";
-	private static final String MAYIS = "Mayýs";
+	private static final String MAYIS = "MayÃ½s";
 	private static final String HAZIRAN = "Haziran";
 	private static final String TEMMUZ = "Temmuz";
-	private static final String AGUSTOS = "Aðustos";
-	private static final String EYLUL = "Eylül";
+	private static final String AGUSTOS = "AÃ°ustos";
+	private static final String EYLUL = "EylÃ¼l";
 	private static final String EKIM = "Ekim";
-	private static final String KASIM = "Kasým";
-	private static final String ARALIK = "Aralýk";
+	private static final String KASIM = "KasÃ½m";
+	private static final String ARALIK = "AralÃ½k";
 	private static final String[] monthArray = {OCAK, SUBAT, MART, NISAN, MAYIS, HAZIRAN, TEMMUZ, AGUSTOS, EYLUL, EKIM, KASIM, ARALIK};
 	
 	public static int compare(String date1, String date2) {
@@ -45,7 +45,7 @@ public class AbstractCalendar {
 				return day + 279;
 		}
 		else if (length == 5) {
-			if (first == 'Þ')
+			if (first == 'Ãž')
 				return day + 31;
 			else if (first == 'N')
 				return day + 93;
@@ -150,7 +150,7 @@ public class AbstractCalendar {
 				if (monthArray[i].equals(month1))
 					date1Index = i + 1;
 				if (monthArray[i].equals(month2))
-					date2Index = i + 1;
+					date2Index = i + 13;
 			}
 			
 			int monthDistance = date1Index - date2Index;
