@@ -11,7 +11,8 @@ public class Main {
 		boolean exist = false;
 		try {
 			exist = file.createNewFile();
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 		FileHandler handler = new FileHandler(file);
