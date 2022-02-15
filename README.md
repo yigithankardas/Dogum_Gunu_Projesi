@@ -1,7 +1,6 @@
 # Doğum Günü Projesi
 Doğum günlerini depolayan ve doğum günü ekleme/çıkarma/gösterme gibi basit operasyonları yapabilen program.
 Doğum günlerini bir dosyada saklar.
-Çalıştırmadan önce FileHandler dosyasına herhangi bir boş text dosyasının sistem yolunu yazın.
 (Program %100 tamamlanmadı)
 
 06/12/2021 Güncelleme:
@@ -33,3 +32,6 @@ Güncelleme 2:
 
 23/01/2022 Güncelleme:
   En yakın doğum gününü bulan algoritmadaki hatayı giderdim.
+
+# Nasıl indirilir?
+Sitenin sağ üstündeki `releases` kısmına tıklayıp `Assets`'e basarak `Doğum Günü Projesi.jar` dosyasını indirip çift-tık ile çalıştırın.
