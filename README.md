@@ -34,4 +34,4 @@ Güncelleme 2:
   En yakın doğum gününü bulan algoritmadaki hatayı giderdim.
 
 # Nasıl indirilir?
-Sitenin sağ üstündeki `releases` kısmına tıklayıp `Assets`'e basarak `Doğum Günü Projesi.jar` dosyasını indirip çift-tık ile çalıştırın.
+Sitenin sağ üstündeki `releases` kısmına tıklayıp `Assets`'e basarak `Dogum_Gunleri.jar` dosyasını indirip çift-tık ile çalıştırın.
