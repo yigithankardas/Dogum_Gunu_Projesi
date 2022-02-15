@@ -5,32 +5,31 @@ Doğum günlerini bir dosyada saklar.
 (Program %100 tamamlanmadı)
 
 06/12/2021 Güncelleme:
-  1 haftadır JLabel'a icon eklemeyi beceremediğim için yeni release gelmedi. Bu saçma sorunu çözmeye çalışıyorum.
+  1 haftadır JLabel'a `ImageIcon` eklemeyi beceremediğim için yeni release gelmedi.
 
 09/12/2021 Güncelleme:
-  Resim ekleme sorununu çözdüm. Resimleri yüklemek zaman gerektirdiği için programın başında yüklemek gerekiyormuş.
+  Fotoğraf ekleme sorununu çözdüm. Fotoğrafları yüklemek zaman gerektirdiği için programın başında yüklemek gerekiyormuş.
 
 11/12/2021 Güncelleme:
-  Resim eklerken oluşan hataları düzeltemedim ve resim eklememe kararı aldım.
+  Fotoğraf ekleme sorununu düzeltememişim. Bu yüzden fotoğraf eklememe kararı aldım.
   
 13/12/2021 Güncelleme:
-  Üstte bahsettiğim tüm problemler, ```frame.setVisible(true)``` ifadesini sonda yazmak yerine başlarda yazmamdan kaynaklanıyormuş. Birkaç GUI iyileştirmesi yaptım.
+  Üstte bahsettiğim tüm problemler, ```frame.setVisible(true)``` ifadesini sonda yazmak yerine başlarda yazmamdan kaynaklanıyormuş.
   
 Güncelleme 2:
-  Arama kutusu ekledim. Güncel hali fotoğraf olarak ekledim.
+  Arama kutusu ekledim ama çalışmıyor.
   
 19/12/2021 Güncelleme:
-  Arama kutusunu geliştirdim. Dosyadan okunan değerler ile yeni paneller oluşturup bunları JScrollPane ile gezebiliyorum. Doğumgünleri ```bottomPanel```'de listeleniyor.
+  Arama kutusunu geliştirdim ama hala çalışmıyor. Dosyadan okunan değerler ile yeni paneller oluşturup bunları JScrollPane ile gezebiliyorum. Doğumgünleri `bottomPanel`'de listeleniyor.
 
 25/12/2021 Güncelleme:
   O günün tarihine en yakın olan doğumgününü bulma algoritmasını ekledim.
-  Programın güncel halinin fotoğrafını ekledim.
   
 04/01/2022 Güncelleme:
  Doğum günü eklemeyi sağlayacak yeni bir panel ve buton ekledim.
 
 07/01/2022 Güncelleme:
-  Programın ilk erken erşimini açtım. Program şu anda arma hariç açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
+  Programın ilk erken erşimini açtım. Program şu anda arama hariç açıklamada bahsedilen temel işlemleri yapabilir hale getirildi.
 
 23/01/2022 Güncelleme:
   En yakın doğum gününü bulan algoritmadaki hatayı giderdim.
