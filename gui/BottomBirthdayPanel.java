@@ -14,6 +14,6 @@ public class BottomBirthdayPanel extends JPanel {
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(840, 100));
 		this.setBackground(new Color(40, 40, 40));
-		this.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+		this.setBorder(BorderFactory.createLineBorder(Color.gray, 1));
 	}
 }

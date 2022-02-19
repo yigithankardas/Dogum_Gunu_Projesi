@@ -1,20 +1,18 @@
 package fileio;
 import java.io.*;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import dates.AbstractCalendar;
 
-@SuppressWarnings("unused")
 public class FileHandler {
 	
 	private String text;
 	private StringBuilder builder;
 	private Scanner scan;
 	private File file;
-	private boolean scannerFlag;	// true for File, false for String.
 	private ArrayList<String> lineList;
+	
 	
 	public FileHandler(File file) {
 		builder = new StringBuilder("");
@@ -24,6 +22,7 @@ public class FileHandler {
 		initializeText();
 		sort();
 	}
+	
 	
 	private void initializeText() {
 		String currentLine = "";
@@ -39,9 +38,11 @@ public class FileHandler {
 		text = builder.toString();
 	}
 	
+	
 	public String text() {
 		return text;
 	}
+	
 	
 	private void sort() {
 		int size = lineList.size();
@@ -59,6 +60,7 @@ public class FileHandler {
 		}
 	}
 	
+	
 	public void add(String name, String birthday) {
 		lineList.add(birthday + " ==> " + name);
 		sort();
@@ -74,6 +76,7 @@ public class FileHandler {
 			writer.write(s + "\n\n");
 		writer.close();
 	}
+	
 	
 	public void remove(String name) {
 		for (int i = 0; i < lineList.size(); i++) {
@@ -94,6 +97,7 @@ public class FileHandler {
 		writer.close();
 	}
 	
+	
 	private void setScannerToFile() {
 		try {
 			scan = new Scanner(file);
@@ -102,13 +106,8 @@ public class FileHandler {
 			System.out.println("An exception inside \"FileHandler\" class.");
 			System.exit(0);
 		}
-		scannerFlag = true;
 	}
 	
-	private void setScannerToString(String str) {
-		scan = new Scanner(str);
-		scannerFlag = false;
-	}
 	
 	public void printText() {
 		for (int i = 0; i < lineList.size(); i++) {
@@ -116,9 +115,11 @@ public class FileHandler {
 		}
 	}
 	
+	
 	public ArrayList<String> getBirthdayList() {
 		return lineList;
 	}
+	
 	
 	public ArrayList<String> find(String date) {
 		if (lineList.isEmpty())

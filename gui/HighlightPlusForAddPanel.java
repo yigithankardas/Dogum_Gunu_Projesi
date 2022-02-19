@@ -79,11 +79,13 @@ public class HighlightPlusForAddPanel extends HighlightListener {
 		button.setFocusable(false);
 		button.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e2) {
 				String birthday = (String)days.getSelectedItem() + " " + (String)months.getSelectedItem();
 				if (! name.getText().equals("")) {
 					handler.add(name.getText(), birthday);
 					gui.updateBirthdayPanels(handler);
+					frame.dispose();
+					mouseClicked(e);
 				}
 			}	
 		});

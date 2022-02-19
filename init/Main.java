@@ -1,6 +1,6 @@
 package init;
-import java.io.*;
 
+import java.io.*;
 import fileio.*;
 import gui.*;
 
@@ -11,15 +11,15 @@ public class Main {
 		boolean exist = false;
 		try {
 			exist = file.createNewFile();
-		} 
-		catch (IOException e) {
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		FileHandler handler = new FileHandler(file);
 		GUI frame = new GUI(handler);
 		frame.initiate();
 		
-		if (exist == true) {	// dosya oluÅŸturuldu
+		if (exist == true) {	// dosya oluþturuldu
 			GUI.firstTime();
 		}
 	}
