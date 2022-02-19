@@ -35,3 +35,6 @@ Güncelleme 2:
 
 23/01/2022 Güncelleme:
   En yakın doğum gününü bulan algoritmadaki hatayı giderdim.
+
+19/02/2022 Güncelleme:
+  Doğumgünü eklerken günlerin yanlış alınmasına sebep olan bir hataya geçici bir çözüm getirdim.
