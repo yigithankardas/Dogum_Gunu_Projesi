@@ -1,5 +1,5 @@
 # Nasıl indirilir?
-Sitenin sağ üstündeki `releases` kısmına tıklayıp `Assets`'e basarak `Dogum_Gunleri.jar` dosyasını indirip çift-tık ile çalıştırın.
+Sitenin sağındaki `releases` kısmına tıklayıp `Assets`'e basarak `Dogum_Gunleri.jar` dosyasını indirip çift-tık ile çalıştırın.
 
 # Doğum Günü Projesi
 Doğum günlerini depolayan ve doğum günü ekleme/çıkarma/gösterme gibi basit operasyonları yapabilen program.
