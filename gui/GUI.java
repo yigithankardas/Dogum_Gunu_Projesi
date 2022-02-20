@@ -562,7 +562,12 @@ public class GUI {
 		label2Panel.setBackground(new Color(50, 50, 50));
 		
 		JLabel label1 = new JLabel();
-		label1.setText(System.getenv("USERPROFILE") + "/DogumGunleri.txt");
+		String possibleText1 = System.getenv("USERPROFILE") + "/DogumGunleri.txt";
+		String possibleText2 = System.getenv("USERPROFILE") + "\\DogumGunleri.txt";
+		if (System.getenv("USERPROFILE").contains("\\"))
+			label1.setText(possibleText2);
+		else
+			label1.setText(possibleText1);
 		label1.setFont(new Font("SansSerif", Font.PLAIN, 25));
 		label1.setForeground(Color.white);
 		
