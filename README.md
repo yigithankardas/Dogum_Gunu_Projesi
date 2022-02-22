@@ -39,3 +39,6 @@ Doğum günlerini bir dosyada saklar.
 
 20/02/2022:
   Program ilk açıldığında çıkan menüde '\' karakteri ile '/' karakterinin oluşturduğu düzensizliği giderdim.
+
+23/02/2022:
+  En yakın doğum gününü bulan algoritmadaki bir hatayı giderdim.
