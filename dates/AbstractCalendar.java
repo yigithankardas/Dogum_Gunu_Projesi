@@ -157,13 +157,14 @@ public class AbstractCalendar {
 				if (monthArray[i].equals(month1))
 					date1Index = i + 1;
 				if (monthArray[i].equals(month2))
-					date2Index = i + 13;
+					date2Index = i + 1;
 			}
 			
 			int monthDistance = date1Index - date2Index;
 			if (monthDistance < 0)
-				return day1 + day2 + (-monthDistance * 30);
-			return Integer.MIN_VALUE;
+				return day2 - day1 + (-monthDistance * 30);
+			else
+				return day2 + day1 + (monthDistance * 30);
 		}
 	}
 }
